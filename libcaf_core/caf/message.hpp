@@ -37,6 +37,11 @@ namespace caf {
 /// tuple with elements of any type.
 class CAF_CORE_EXPORT message {
 public:
+  // -- friend classes ---------------------------------------------------------
+
+  template <class...>
+  friend class typed_message;
+
   // -- member types -----------------------------------------------------------
 
   using data_ptr = intrusive_cow_ptr<detail::message_data>;

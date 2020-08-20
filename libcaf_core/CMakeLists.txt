@@ -181,7 +181,130 @@ add_library(libcaf_core_obj OBJECT ${CAF_CORE_HEADERS}
   src/uuid.cpp
 )
 
-add_library(libcaf_core "${PROJECT_SOURCE_DIR}/cmake/dummy.cpp"
+# -- list cpp files for caf-core-test ------------------------------------------
+
+set(CAF_CORE_TEST_SOURCES
+  test/actor_clock.cpp
+  test/actor_factory.cpp
+  test/actor_lifetime.cpp
+  test/actor_pool.cpp
+  test/actor_profiler.cpp
+  test/actor_registry.cpp
+  test/actor_system_config.cpp
+  test/actor_termination.cpp
+  test/aout.cpp
+  test/behavior.cpp
+  test/binary_deserializer.cpp
+  test/binary_serializer.cpp
+  test/blocking_actor.cpp
+  test/broadcast_downstream_manager.cpp
+  test/byte.cpp
+  test/composition.cpp
+  test/config_option.cpp
+  test/config_option_set.cpp
+  test/config_value.cpp
+  test/config_value_adaptor.cpp
+  test/const_typed_message_view.cpp
+  test/constructor_attach.cpp
+  test/continuous_streaming.cpp
+  test/cow_tuple.cpp
+  test/custom_exception_handler.cpp
+  test/decorator/sequencer.cpp
+  test/deep_to_string.cpp
+  test/detached_actors.cpp
+  test/detail/bounds_checker.cpp
+  test/detail/ini_consumer.cpp
+  test/detail/limited_vector.cpp
+  test/detail/meta_object.cpp
+  test/detail/parse.cpp
+  test/detail/parser/read_bool.cpp
+  test/detail/parser/read_floating_point.cpp
+  test/detail/parser/read_ini.cpp
+  test/detail/parser/read_number.cpp
+  test/detail/parser/read_number_or_timespan.cpp
+  test/detail/parser/read_signed_integer.cpp
+  test/detail/parser/read_string.cpp
+  test/detail/parser/read_timespan.cpp
+  test/detail/parser/read_unsigned_integer.cpp
+  test/detail/ringbuffer.cpp
+  test/detail/ripemd_160.cpp
+  test/detail/serialized_size.cpp
+  test/detail/tick_emitter.cpp
+  test/detail/type_id_list_builder.cpp
+  test/detail/unique_function.cpp
+  test/detail/unordered_flat_map.cpp
+  test/dictionary.cpp
+  test/dynamic_spawn.cpp
+  test/error.cpp
+  test/expected.cpp
+  test/function_view.cpp
+  test/fused_downstream_manager.cpp
+  test/handles.cpp
+  test/inspector.cpp
+  test/intrusive/drr_cached_queue.cpp
+  test/intrusive/drr_queue.cpp
+  test/intrusive/fifo_inbox.cpp
+  test/intrusive/lifo_inbox.cpp
+  test/intrusive/task_queue.cpp
+  test/intrusive/wdrr_dynamic_multiplexed_queue.cpp
+  test/intrusive/wdrr_fixed_multiplexed_queue.cpp
+  test/intrusive_ptr.cpp
+  test/ipv4_address.cpp
+  test/ipv4_endpoint.cpp
+  test/ipv4_subnet.cpp
+  test/ipv6_address.cpp
+  test/ipv6_endpoint.cpp
+  test/ipv6_subnet.cpp
+  test/local_group.cpp
+  test/logger.cpp
+  test/mailbox_element.cpp
+  test/make_config_value_field.cpp
+  test/message.cpp
+  test/message_id.cpp
+  test/message_lifetime.cpp
+  test/metaprogramming.cpp
+  test/mixin/requester.cpp
+  test/mixin/sender.cpp
+  test/mock_streaming_classes.cpp
+  test/native_streaming_classes.cpp
+  test/node_id.cpp
+  test/optional.cpp
+  test/or_else.cpp
+  test/pipeline_streaming.cpp
+  test/policy/categorized.cpp
+  test/policy/select_all.cpp
+  test/policy/select_any.cpp
+  test/request_timeout.cpp
+  test/result.cpp
+  test/selective_streaming.cpp
+  test/serialization.cpp
+  test/settings.cpp
+  test/simple_timeout.cpp
+  test/span.cpp
+  test/stateful_actor.cpp
+  test/string_algorithms.cpp
+  test/string_view.cpp
+  test/sum_type.cpp
+  test/thread_hook.cpp
+  test/tracing_data.cpp
+  test/type_id_list.cpp
+  test/typed_behavior.cpp
+  test/typed_message.cpp
+  test/typed_message_view.cpp
+  test/typed_response_promise.cpp
+  test/typed_spawn.cpp
+  test/unit.cpp
+  test/uri.cpp
+  test/uuid.cpp
+  test/variant.cpp
+)
+
+# -- add library target --------------------------------------------------------
+
+add_library(libcaf_core_obj OBJECT ${CAF_CORE_SOURCES} ${CAF_CORE_HEADERS})
+
+add_library(libcaf_core
+            "${PROJECT_SOURCE_DIR}/cmake/dummy.cpp"
             $<TARGET_OBJECTS:libcaf_core_obj>)
 
 caf_core_set_default_properties(libcaf_core_obj libcaf_core)
